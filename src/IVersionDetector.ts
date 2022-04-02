@@ -4,7 +4,8 @@ interface IVersionDetector {
   tryGetVersionInfoAsync(
     username: string,
     repo: string,
-    path: string
+    branch: string,
+    path?: string
   ): Promise<detectionResult>;
 }
 
