@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Quicksand&display=swap");
+
 $ok-result: #58c531;
 $not-detected: #c53b31;
 
@@ -6,39 +8,73 @@ $main-background: #2f3637;
 $text-color: white;
 
 $height: 240px;
+$width: 400px;
 
 $header-height: 34px;
 $main-height: $height - $header-height;
 
+$text-font-family: "Quicksand", sans-serif;
+
 html, body {
-  min-width: 400px;
-  max-width: 400px;
+  min-width: $width;
+  max-width: $width;
   min-height: $height;
   max-height: $height;
   margin: 0;
   padding: 0;
 
   header {
-    width: 100%;
-    height: $header-height;
+    height: $header-height - 10px;
     background-color: $header-background;
+    padding: {
+      left: 10px;
+      right: 10px;
+      top: 5px;
+      bottom: 5px;
+    };
+    display: flex;
+    align-items: center;
 
     .detect-status {
       background-color: $ok-result;
       width: 15px;
       height: 15px;
       border-radius: 7.5px;
+      margin-right: 10px;
+    }
+
+    .not-detected-status {
+      background-color: $not-detected;
+      width: 15px;
+      height: 15px;
+      border-radius: 7.5px;
+      margin-right: 10px;
     }
 
     .title-wrapper {
       .title-text {
         color: white;
+        font-family: $text-font-family;
+        font-weight: 300;
       }
     }
   }
 
   main {
+    padding: 10px;
     background-color: $main-background;
-    height: $main-height;
+    height: $main-height - 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .result-wrapper {
+      .result {
+        font-size: 50px;
+        font-family: $text-font-family;
+        font-weight: 500;
+        color: $text-color;
+      }
+    }
   }
 }
