@@ -1,14 +1,44 @@
+$ok-result: #58c531;
+$not-detected: #c53b31;
+
+$header-background: #657174;
+$main-background: #2f3637;
+$text-color: white;
+
+$height: 240px;
+
+$header-height: 34px;
+$main-height: $height - $header-height;
+
 html, body {
-  min-width: 200px;
+  min-width: 400px;
+  max-width: 400px;
+  min-height: $height;
+  max-height: $height;
   margin: 0;
   padding: 0;
 
-  #app {
-    font-family: Avenir, Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
-    margin-top: 60px;
+  header {
+    width: 100%;
+    height: $header-height;
+    background-color: $header-background;
+
+    .detect-status {
+      background-color: $ok-result;
+      width: 15px;
+      height: 15px;
+      border-radius: 7.5px;
+    }
+
+    .title-wrapper {
+      .title-text {
+        color: white;
+      }
+    }
+  }
+
+  main {
+    background-color: $main-background;
+    height: $main-height;
   }
 }
