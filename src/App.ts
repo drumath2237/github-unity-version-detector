@@ -12,7 +12,11 @@ class App {
     }
 
     detector
-      .tryGetVersionInfoAsync("drumath2237", "k4a-vfx", "master")
+      .tryGetVersionInfoAsync({
+        username: "drumath2237",
+        repo: "k4a-vfx",
+        branch: "master",
+      })
       .then((res) => {
         if (!res || !res.result) {
           resultText.innerText = "cannot detect";

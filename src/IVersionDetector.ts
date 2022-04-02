@@ -1,12 +1,9 @@
+import { GitHubRepoInfo } from "./GitHubRepoInfo";
+
 type detectionResult = { result: boolean; version: string };
 
 interface IVersionDetector {
-  tryGetVersionInfoAsync(
-    username: string,
-    repo: string,
-    branch: string,
-    path?: string
-  ): Promise<detectionResult>;
+  tryGetVersionInfoAsync(repoInfo: GitHubRepoInfo): Promise<detectionResult>;
 }
 
 export { detectionResult, IVersionDetector };

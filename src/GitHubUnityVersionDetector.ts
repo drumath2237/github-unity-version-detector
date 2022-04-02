@@ -1,15 +1,17 @@
+import { GitHubRepoInfo } from "./GitHubRepoInfo";
 import { detectionResult, IVersionDetector } from "./IVersionDetector";
 
 class GitHubUnityVersionDetector implements IVersionDetector {
   public async tryGetVersionInfoAsync(
-    username: string,
-    repo: string,
-    branch: string,
-    path?: string
+    repoInfo: GitHubRepoInfo
   ): Promise<detectionResult> {
+    const { username, branch, repo, path } = repoInfo;
+
     const rawTextPath = `https://raw.githubusercontent.com/${username}/${repo}/${branch}${
       path ? `/${path}` : ""
     }/ProjectSettings/ProjectVersion.txt`;
+
+    console.log(rawTextPath);
 
     const rawRequestResult = await fetch(rawTextPath, { method: "GET" });
     if (!rawRequestResult.ok) {

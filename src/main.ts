@@ -9,16 +9,16 @@ window.addEventListener("load", () => {
     return;
   }
 
-  chrome.tabs.query(
-    {
-      active: true,
-      currentWindow: true,
-    },
-    (tabs) => {
-      const url = tabs[0].url;
-      headerTitle.innerText = url ?? "";
-    }
-  );
+  // chrome.tabs.query(
+  //   {
+  //     active: true,
+  //     currentWindow: true,
+  //   },
+  //   (tabs) => {
+  //     const url = tabs[0].url;
+  //     headerTitle.innerText = url ?? "";
+  //   }
+  // );
 
   const detector = new GitHubUnityVersionDetector();
   App.main(detector);
