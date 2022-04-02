@@ -35,20 +35,19 @@ html, body {
     display: flex;
     align-items: center;
 
-    .detect-status {
-      background-color: $ok-result;
+    .detection-indicator {
       width: 15px;
       height: 15px;
       border-radius: 7.5px;
       margin-right: 10px;
     }
 
+    .detect-status {
+      background-color: $ok-result;
+    }
+
     .not-detected-status {
       background-color: $not-detected;
-      width: 15px;
-      height: 15px;
-      border-radius: 7.5px;
-      margin-right: 10px;
     }
 
     .title-wrapper {
