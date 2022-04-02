@@ -1,3 +1,4 @@
+import { parseUrl2PossibleRepoInfos } from "./GitHubRepoInfo";
 import { IVersionDetector } from "./IVersionDetector";
 
 class App {
@@ -11,22 +12,40 @@ class App {
       return;
     }
 
-    detector
-      .tryGetVersionInfoAsync({
-        username: "drumath2237",
-        repo: "k4a-vfx",
-        branch: "master",
-      })
-      .then((res) => {
-        if (!res || !res.result) {
-          resultText.innerText = "cannot detect";
-          resultIndicator.classList.add("not-detected-status");
+    chrome.tabs.query(
+      {
+        active: true,
+        currentWindow: true,
+        lastFocusedWindow: true,
+      },
+      async (tabs) => {
+        const currentURL = tabs[0].url;
+        if (!currentURL) {
           return;
         }
 
-        resultText.innerText = res.version;
-        resultIndicator.classList.add("detect-status");
-      });
+        const repoInfos = parseUrl2PossibleRepoInfos(currentURL);
+        if (!repoInfos) {
+          return;
+        }
+
+        for (let info of repoInfos) {
+          const res = await detector.tryGetVersionInfoAsync(info);
+
+          if (!res.result) {
+            resultText.innerText = "cannot detect";
+            resultIndicator.classList.add("not-detected-status");
+            continue;
+          }
+
+          resultText.innerText = res.version;
+          resultIndicator.classList.add("detect-status");
+          resultIndicator.classList.remove("not-detected-status");
+
+          break;
+        }
+      }
+    );
   }
 }
 
