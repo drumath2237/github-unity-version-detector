@@ -5,7 +5,7 @@ interface GitHubRepoInfo {
   path?: string;
 }
 
-const parseUrl2PossibleRepoInfos = (url: string): GitHubRepoInfo[] | null => {
+const parseUrl2PossibleRepoInfos = (url: string): GitHubRepoInfo[] => {
   const notDefaultBranchOrNotRootDirectoryRegexp =
     /https:\/\/github.com\/(.+)\/(.+)\/tree\/([^\/]+)\/(.+)$/;
 
@@ -25,7 +25,7 @@ const parseUrl2PossibleRepoInfos = (url: string): GitHubRepoInfo[] | null => {
         },
       ];
     }
-    return null;
+    return [];
   }
 
   if (defaultBranchAndRootDirectoryRegexp.test(url)) {
@@ -51,7 +51,7 @@ const parseUrl2PossibleRepoInfos = (url: string): GitHubRepoInfo[] | null => {
     }
   }
 
-  return null;
+  return [];
 };
 
 export { GitHubRepoInfo, parseUrl2PossibleRepoInfos };

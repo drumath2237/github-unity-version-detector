@@ -25,9 +25,6 @@ class App {
         }
 
         const repoInfos = parseUrl2PossibleRepoInfos(currentURL);
-        if (!repoInfos) {
-          return;
-        }
 
         for (let info of repoInfos) {
           const res = await detector.tryGetVersionInfoAsync(info);
@@ -42,8 +39,11 @@ class App {
           resultIndicator.classList.add("detect-status");
           resultIndicator.classList.remove("not-detected-status");
 
-          break;
+          return;
         }
+
+        resultText.innerText = "cannot detect";
+        resultIndicator.classList.add("not-detected-status");
       }
     );
   }
