@@ -11,8 +11,6 @@ class GitHubUnityVersionDetector implements IVersionDetector {
       path ? `/${path}` : ""
     }/ProjectSettings/ProjectVersion.txt`;
 
-    console.log(rawTextPath);
-
     const rawRequestResult = await fetch(rawTextPath, { method: "GET" });
     if (!rawRequestResult.ok) {
       return {
