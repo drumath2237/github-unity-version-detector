@@ -68,6 +68,10 @@ html, body {
     display: flex;
     align-items: center;
     justify-content: center;
+    background-image: url("../image/U_Logo_Black_RGB.svg");
+    background-size: 200%;
+    background-position: right 135% bottom 65%;
+    background-repeat: no-repeat;
 
     .result-wrapper {
       .result {
