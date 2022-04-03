@@ -22,6 +22,13 @@ Unity プロジェクトルートディレクトリに移動して起動する�
 
 ## Install & Build
 
+### ビルド済みファイルを使用する方法
+
+[Releases](https://github.com/drumath2237/github-unity-version-detector/releases)から
+最新のビルドを取得し、展開したものを[`chrome://extensions`](chrome://extensions)から読み込むことで、Google Chromeで拡張機能を使い始められます。
+
+### 自力でビルドする方法
+
 ```bash
 # install
 yarn install
